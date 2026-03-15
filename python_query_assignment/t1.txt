@@ -1,0 +1,63 @@
+-- create the students table
+CREATE TABLE students (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    score INT,
+    passed BOOLEAN,
+    class INT
+);
+-- inserting data
+INSERT INTO students (id, name, score, passed, class) VALUES
+(1, 'Aarav', 92, TRUE, 10),
+(2, 'Diya', 76, TRUE, 10),
+(3, 'Rohan', 65, FALSE, 9),
+(4, 'Meera', 88, TRUE, 10),
+(5, 'Kabir', 54, FALSE, 9),
+(6, 'Ananya', 95, TRUE, 10),
+(7, 'Rahul', 81, TRUE, 9),
+(8, 'Sneha', 73, TRUE, 9),
+(9, 'Arjun', 84, TRUE, 10),
+(10, 'Kavya', 69, FALSE, 9);
+ 
+-- 1. all columns
+SELECT * FROM students;
+ 
+-- 2. only name and score
+SELECT name, score FROM students;
+ 
+-- 3. students who scored above 80
+SELECT * FROM students
+WHERE score > 80;
+ 
+-- 4. scored above 80 and passed
+SELECT * FROM students
+WHERE score > 80 AND passed = TRUE;
+ 
+-- 5. scored above 85 or class 9
+SELECT * FROM students
+WHERE score > 85 OR class = 9;
+ 
+-- 6. students who did not pass
+SELECT * FROM students
+WHERE NOT passed = TRUE;
+ 
+-- 7. distinct classes
+SELECT DISTINCT class FROM students;
+ 
+-- 8. top 5 highest scoring students
+SELECT * FROM students
+ORDER BY score DESC
+LIMIT 5;
+ 
+-- 9. sort by class asc and score desc
+SELECT * FROM students
+ORDER BY class ASC, score DESC;
+ 
+-- 10. renaming score as final_score
+SELECT name, score AS final_score FROM students;
+ 
+-- 11. combined query
+SELECT name, score FROM students
+WHERE score > 75
+ORDER BY score DESC
+LIMIT 3;
